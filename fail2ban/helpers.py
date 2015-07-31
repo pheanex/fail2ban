@@ -30,7 +30,7 @@ import logging
 def formatExceptionInfo():
 	""" Consistently format exception information """
 	cla, exc = sys.exc_info()[:2]
-	return (cla.__name__, str(exc))
+	return cla.__name__, str(exc)
 
 
 #

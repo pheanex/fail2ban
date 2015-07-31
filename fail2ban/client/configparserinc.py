@@ -135,7 +135,7 @@ after = 1.conf
 			# don't have sharing:
 			cfg = SCPWI()
 			i = cfg.read(filename, get_includes=False)
-		return (cfg, i)
+		return cfg, i
 
 	def _getIncludes(self, filenames, seen=[]):
 		if not isinstance(filenames, list):

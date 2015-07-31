@@ -35,7 +35,7 @@ from ..helpers import getLogger
 logSys = getLogger(__name__)
 
 
-class ConfigReader():
+class ConfigReader:
 	"""Generic config reader class.
 
 	A caching adapter which automatically reuses already shared configuration.

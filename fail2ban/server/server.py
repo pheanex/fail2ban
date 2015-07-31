@@ -544,7 +544,7 @@ class Server:
 			# PGID.
 			pid = os.fork()
 		except OSError, e:
-			return((e.errno, e.strerror))	 # ERROR (return a tuple)
+			return e.errno, e.strerror  # ERROR (return a tuple)
 
 		if pid == 0:	   # The first child.
 
@@ -565,9 +565,9 @@ class Server:
 				# preventing the daemon from ever acquiring a controlling terminal.
 				pid = os.fork()		# Fork a second child.
 			except OSError, e:
-				return((e.errno, e.strerror))  # ERROR (return a tuple)
+				return e.errno, e.strerror  # ERROR (return a tuple)
 
-			if (pid == 0):	  # The second child.
+			if pid == 0:	  # The second child.
 				# Ensure that the daemon doesn't keep any directory in use.  Failure
 				# to do this could make a filesystem unmountable.
 				os.chdir("/")

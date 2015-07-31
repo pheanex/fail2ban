@@ -108,7 +108,7 @@ def _ticket_tuple(ticket):
 	date = ticket.getTime()
 	ip = ticket.getIP()
 	matches = ticket.getMatches()
-	return (ip, attempts, date, matches)
+	return ip, attempts, date, matches
 
 
 def _assert_correct_last_attempt(utest, filter_, output, count=None):

@@ -82,7 +82,7 @@ class DateTemplate(object):
 			If regular expression fails to compile
 		"""
 		regex = regex.strip()
-		if (wordBegin and not re.search(r'^\^', regex)):
+		if wordBegin and not re.search(r'^\^', regex):
 			regex = r'\b' + regex
 		self._regex = regex
 		self._cRegex = re.compile(regex, re.UNICODE | re.IGNORECASE)
@@ -151,7 +151,7 @@ class DateEpoch(DateTemplate):
 		dateMatch = self.matchDate(line)
 		if dateMatch:
 			# extract part of format which represents seconds since epoch
-			return (float(dateMatch.group()), dateMatch)
+			return float(dateMatch.group()), dateMatch
 		return None
 
 
@@ -273,5 +273,5 @@ class DateTai64n(DateTemplate):
 			value = dateMatch.group()
 			seconds_since_epoch = value[2:17]
 			# convert seconds from HEX into local time stamp
-			return (int(seconds_since_epoch, 16), dateMatch)
+			return int(seconds_since_epoch, 16), dateMatch
 		return None

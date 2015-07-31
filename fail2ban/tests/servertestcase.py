@@ -86,7 +86,7 @@ class TransmitterBase(unittest.TestCase):
 
 		def v(x):
 			"""Prepare value for comparison"""
-			return (repr(x) if repr_ else x)
+			return repr(x) if repr_ else x
 
 		self.assertEqual(v(self.transm.proceed(setCmd)), v((outCode, outValue)))
 		if not outCode:
@@ -642,7 +642,7 @@ class Transmitter(TransmitterBase):
 					"issue forbidding correct operation of Fail2Ban: "
 					"http://bugs.python.org/issue2646  Upgrade your Python and "
 					"meanwhile other intestPythonActionMethodsAndProperties will "
-					"be skipped" % (sys.version))
+					"be skipped" % sys.version)
 				return
 			raise
 		self.assertEqual(

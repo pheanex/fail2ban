@@ -445,7 +445,7 @@ class Fail2banRegex(object):
 			for cnt, failregex in enumerate(failregexes):
 				match = failregex.getStats()
 				total += match
-				if (match or self._verbose):
+				if match or self._verbose:
 					out.append("%2d) [%d] %s" % (cnt+1, match, failregex.getFailRegex()))
 
 				if self._verbose and len(failregex.getIPList()):
