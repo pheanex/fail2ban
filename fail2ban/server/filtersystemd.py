@@ -103,7 +103,7 @@ class FilterSystemd(JournalFilter): # pragma: systemd no cover
 	##
 	# Reset a journal match filter called on removal or failure
 	#
-	# @return None 
+	# @return None
 
 	def resetJournalMatches(self):
 		self.__journal.flush_matches()
@@ -139,11 +139,11 @@ class FilterSystemd(JournalFilter): # pragma: systemd no cover
 	def getJournalMatch(self):
 		return self.__matches
 
-    ##
-    # Join group of log elements which may be a mix of bytes and strings
-    #
-    # @param elements list of strings and bytes
-    # @return elements joined as string
+	##
+	# Join group of log elements which may be a mix of bytes and strings
+	#
+	# @param elements list of strings and bytes
+	# @return elements joined as string
 
 	@staticmethod
 	def _joinStrAndBytes(elements):

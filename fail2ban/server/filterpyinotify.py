@@ -142,7 +142,7 @@ class FilterPyinotify(FileFilter):
 		self._addFileWatcher(path)
 		self._process_file(path)
 
-    ##
+	##
 	# Delete a log path
 	#
 	# @param path the log file to delete
