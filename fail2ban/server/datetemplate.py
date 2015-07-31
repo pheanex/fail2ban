@@ -87,9 +87,7 @@ class DateTemplate(object):
 		self._regex = regex
 		self._cRegex = re.compile(regex, re.UNICODE | re.IGNORECASE)
 
-	regex = property(getRegex, setRegex, doc=
-		"""Regex used to search for date.
-		""")
+	regex = property(getRegex, setRegex, doc="""Regex used to search for date.""")
 
 	def matchDate(self, line):
 		"""Check if regex for date matches on a log line.

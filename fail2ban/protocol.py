@@ -35,9 +35,9 @@ class dotdict(dict):
 		return self[name]
 
 CSPROTO = dotdict({
-	"EMPTY":  b"",
-	"END":    b"<F2B_END_COMMAND>",
-	"CLOSE":  b"<F2B_CLOSE_COMMAND>"
+	"EMPTY": b"",
+	"END": b"<F2B_END_COMMAND>",
+	"CLOSE": b"<F2B_CLOSE_COMMAND>"
 })
 
 # noinspection PyPep8

@@ -36,7 +36,7 @@ logSys = getLogger(__name__)
 
 class Beautifier:
 
-	def __init__(self, cmd = None):
+	def __init__(self, cmd=None):
 		self.__inputCmd = cmd
 
 	def setInputCmd(self, cmd):

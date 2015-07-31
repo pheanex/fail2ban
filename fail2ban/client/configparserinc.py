@@ -143,7 +143,7 @@ after = 1.conf
 		# retrieve or cache include paths:
 		if self._cfg_share:
 			# cache/share include list:
-			hashv = 'inc-path:'+('\x01'.join(filenames))
+			hashv = 'inc-path:' + ('\x01'.join(filenames))
 			fileNamesFull = self._cfg_share.get(hashv)
 			if fileNamesFull is None:
 				fileNamesFull = []

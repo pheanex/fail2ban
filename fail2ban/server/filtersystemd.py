@@ -257,7 +257,7 @@ class FilterSystemd(JournalFilter): # pragma: systemd no cover
 					self.__modified = False
 			self.__journal.wait(self.sleeptime)
 		logSys.debug((self.jail is not None and self.jail.name
-                      or "jailless") +" filter terminated")
+                      or "jailless") + " filter terminated")
 		return True
 
 	def status(self, flavor="basic"):

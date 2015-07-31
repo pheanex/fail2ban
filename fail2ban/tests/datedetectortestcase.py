@@ -94,15 +94,15 @@ class DateDetectorTest(unittest.TestCase):
 			(False, "2005-01-23T20:59:59.252Z"), #ISO 8601 (UTC)
 			(False, "2005-01-23T15:59:59-05:00"), #ISO 8601 with TZ
 			(False, "2005-01-23T21:59:59"), #ISO 8601 no TZ, assume local
-			(True,  "<01/23/05@21:59:59>"),
-			(True,  "050123 21:59:59"), # MySQL
-			(True,  "Jan-23-05 21:59:59"), # ASSP like
+			(True, "<01/23/05@21:59:59>"),
+			(True, "050123 21:59:59"), # MySQL
+			(True, "Jan-23-05 21:59:59"), # ASSP like
 			(False, "Jan 23, 2005 9:59:59 PM"), # Apache Tomcat
-			(True,  "1106513999"), # Regular epoch
-			(True,  "1106513999.000"), # Regular epoch with millisec
+			(True, "1106513999"), # Regular epoch
+			(True, "1106513999.000"), # Regular epoch with millisec
 			(False, "audit(1106513999.000:987)"), # SELinux
 			):
-			for should_match, prefix in ((True,""),
+			for should_match, prefix in ((True, ""),
 										 (not anchored, "bogus-prefix ")):
 				log = prefix + sdate + "[sshd] error: PAM: Authentication failure"
 
