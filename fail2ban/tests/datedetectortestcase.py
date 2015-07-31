@@ -50,7 +50,7 @@ class DateDetectorTest(unittest.TestCase):
 		#date = [2006, 1, 23, 21, 59, 59, 0, 23, 0]
 		dateUnix = 1138049999.0
 
-		( datelog, matchlog ) = self.__datedetector.getTime(log)
+		(datelog, matchlog) = self.__datedetector.getTime(log)
 		self.assertEqual(datelog, dateUnix)
 		self.assertEqual(matchlog.group(), '1138049999')
 
@@ -61,7 +61,7 @@ class DateDetectorTest(unittest.TestCase):
 		#      is not correctly determined atm, since year is not present
 		#      in the log entry.  Since this doesn't effect the operation
 		#      of fail2ban -- we just ignore incorrect day of the week
-		( datelog, matchlog ) = self.__datedetector.getTime(log)
+		(datelog, matchlog) = self.__datedetector.getTime(log)
 		self.assertEqual(datelog, dateUnix)
 		self.assertEqual(matchlog.group(), 'Jan 23 21:59:59')
 
@@ -70,6 +70,7 @@ class DateDetectorTest(unittest.TestCase):
 		"""
 		dateUnix = 1106513999.0
 
+		# noinspection PyPep8
 		for anchored, sdate in (
 			(False, "Jan 23 21:59:59"),
 			(False, "Sun Jan 23 21:59:59 2005"),
@@ -101,14 +102,14 @@ class DateDetectorTest(unittest.TestCase):
 			(True,  "1106513999.000"), # Regular epoch with millisec
 			(False, "audit(1106513999.000:987)"), # SELinux
 			):
-			for should_match, prefix in ((True,     ""),
+			for should_match, prefix in ((True,""),
 										 (not anchored, "bogus-prefix ")):
 				log = prefix + sdate + "[sshd] error: PAM: Authentication failure"
 
 				logtime = self.__datedetector.getTime(log)
 				if should_match:
-					self.assertNotEqual(logtime, None, "getTime retrieved nothing: failure for %s, anchored: %r, log: %s" % ( sdate, anchored, log))
-					( logUnix, logMatch ) = logtime
+					self.assertNotEqual(logtime, None, "getTime retrieved nothing: failure for %s, anchored: %r, log: %s" % (sdate, anchored, log))
+					(logUnix, logMatch) = logtime
 					self.assertEqual(logUnix, dateUnix, "getTime comparison failure for %s: \"%s\" is not \"%s\"" % (sdate, logUnix, dateUnix))
 					if sdate.startswith('audit('):
 						# yes, special case, the group only matches the number
@@ -136,18 +137,18 @@ class DateDetectorTest(unittest.TestCase):
 		mu = time.mktime(datetime.datetime(2012, 10, 11, 2, 37, 17).timetuple())
 		logdate = self.__datedetector.getTime('2012/10/11 02:37:17 [error] 18434#0')
 		self.assertNotEqual(logdate, None)
-		( logTime, logMatch ) = logdate
+		(logTime, logMatch) = logdate
 		self.assertEqual(logTime, mu)
 		self.assertEqual(logMatch.group(), '2012/10/11 02:37:17')
 		self.__datedetector.sortTemplate()
 		# confuse it with year being at the end
 		for i in xrange(10):
-			( logTime, logMatch ) =	self.__datedetector.getTime('11/10/2012 02:37:17 [error] 18434#0')
+			(logTime, logMatch) = self.__datedetector.getTime('11/10/2012 02:37:17 [error] 18434#0')
 			self.assertEqual(logTime, mu)
 			self.assertEqual(logMatch.group(), '11/10/2012 02:37:17')
 		self.__datedetector.sortTemplate()
 		# and now back to the original
-		( logTime, logMatch ) = self.__datedetector.getTime('2012/10/11 02:37:17 [error] 18434#0')
+		(logTime, logMatch) = self.__datedetector.getTime('2012/10/11 02:37:17 [error] 18434#0')
 		self.assertEqual(logTime, mu)
 		self.assertEqual(logMatch.group(), '2012/10/11 02:37:17')
 

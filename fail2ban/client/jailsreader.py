@@ -63,7 +63,7 @@ class JailsReader(ConfigReader):
 		if section is None:
 			sections = self.sections()
 		else:
-			sections = [ section ]
+			sections = [section]
 
 		# Get the options of all jails.
 		parse_status = True

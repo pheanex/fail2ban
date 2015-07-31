@@ -80,7 +80,7 @@ class Fail2banClient:
 	def dispUsage(self):
 		""" Prints Fail2Ban command line options and exits
 		"""
-		print "Usage: "+self.__argv[0]+" [OPTIONS] <COMMAND>"
+		print "Usage: " + self.__argv[0] + " [OPTIONS] <COMMAND>"
 		print
 		print "Fail2Ban v" + version + " reads log file that contains password failure report"
 		print "and bans the corresponding IP addresses using firewall rules."
@@ -152,7 +152,7 @@ class Fail2banClient:
 	def __ping(self):
 		return self.__processCmd([["ping"]], False)
 
-	def __processCmd(self, cmd, showRet = True):
+	def __processCmd(self, cmd, showRet=True):
 		client = None
 		try:
 			beautifier = Beautifier()
@@ -286,7 +286,7 @@ class Fail2banClient:
 	#
 	# Start the Fail2ban server in daemon mode.
 
-	def __startServerAsync(self, socket, pidfile, force = False, background = True):
+	def __startServerAsync(self, socket, pidfile, force=False, background=True):
 		# Forks the current process.
 		pid = os.fork()
 		if pid == 0:
@@ -332,10 +332,10 @@ class Fail2banClient:
 			# Wonderful visual :)
 			if self.__conf["verbose"] > 1:
 				pos += delta
-				sys.stdout.write("\rINFO   " + mask[:pos] + '#' + mask[pos+1:] +
+				sys.stdout.write("\rINFO   " + mask[:pos] + '#' + mask[pos + 1:] +
 								 " Waiting on the server...")
 				sys.stdout.flush()
-				if pos > len(mask)-3:
+				if pos > len(mask) - 3:
 					delta = -1
 				elif pos < 2:
 					delta = 1

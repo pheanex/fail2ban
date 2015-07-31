@@ -115,7 +115,7 @@ def testSampleRegexsFactory(name):
 					"Line matched when shouldn't have: %s:%i %r" %
 					(logFile.filename(), logFile.filelineno(), line))
 				self.assertEqual(len(ret), 1, "Multiple regexs matched %r - %s:%i" %
-								 (map(lambda x: x[0], ret),logFile.filename(), logFile.filelineno()))
+								 (map(lambda x: x[0], ret), logFile.filename(), logFile.filelineno()))
 
 				# Verify timestamp and host as expected
 				failregex, host, fail2banTime, lines = ret[0]
@@ -123,9 +123,9 @@ def testSampleRegexsFactory(name):
 
 				t = faildata.get("time", None)
 				try:
-					jsonTimeLocal =	datetime.datetime.strptime(t, "%Y-%m-%dT%H:%M:%S")
+					jsonTimeLocal = datetime.datetime.strptime(t, "%Y-%m-%dT%H:%M:%S")
 				except ValueError:
-					jsonTimeLocal =	datetime.datetime.strptime(t, "%Y-%m-%dT%H:%M:%S.%f")
+					jsonTimeLocal = datetime.datetime.strptime(t, "%Y-%m-%dT%H:%M:%S.%f")
 
 				jsonTime = time.mktime(jsonTimeLocal.timetuple())
 
@@ -135,7 +135,7 @@ def testSampleRegexsFactory(name):
 					"UTC Time  mismatch fail2ban %s (%s) != failJson %s (%s)  (diff %.3f seconds) on: %s:%i %r:" %
 					(fail2banTime, time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(fail2banTime)),
 					jsonTime, time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(jsonTime)),
-					fail2banTime - jsonTime, logFile.filename(), logFile.filelineno(), line ) )
+					fail2banTime - jsonTime, logFile.filename(), logFile.filelineno(), line))
 
 				regexsUsed.add(failregex)
 

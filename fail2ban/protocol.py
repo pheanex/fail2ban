@@ -39,6 +39,7 @@ CSPROTO = dotdict({
 	"CLOSE":  b"<F2B_CLOSE_COMMAND>"
 })
 
+# noinspection PyPep8
 protocol = [
 ['', "BASIC", ""],
 ["start", "starts the server and the jails"],
@@ -135,9 +136,9 @@ protocol = [
 # "-h" output of fail2ban-client.
 
 def printFormatted():
-	INDENT=4
-	MARGIN=41
-	WIDTH=34
+	INDENT = 4
+	MARGIN = 41
+	WIDTH = 34
 	firstHeading = False
 	for m in protocol:
 		if m[0] == '' and firstHeading:

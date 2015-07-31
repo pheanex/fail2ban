@@ -77,7 +77,7 @@ class FilterPyinotify(FileFilter):
 	def callback(self, event, origin=''):
 		logSys.debug("%sCallback for Event: %s", origin, event)
 		path = event.pathname
-		if event.mask & ( pyinotify.IN_CREATE | pyinotify.IN_MOVED_TO ):
+		if event.mask & (pyinotify.IN_CREATE | pyinotify.IN_MOVED_TO):
 			# skip directories altogether
 			if event.mask & pyinotify.IN_ISDIR:
 				logSys.debug("Ignoring creation of directory %s", path)

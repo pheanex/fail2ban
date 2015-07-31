@@ -184,7 +184,7 @@ class FilterSystemd(JournalFilter): # pragma: systemd no cover
 			else:
 				monotonic = logentry.get('__MONOTONIC_TIMESTAMP')[0]
 			logelements.append("[%12.6f]" % monotonic.total_seconds())
-		if isinstance(logentry.get('MESSAGE',''), list):
+		if isinstance(logentry.get('MESSAGE', ''), list):
 			logelements.append(" ".join(logentry['MESSAGE']))
 		else:
 			logelements.append(logentry.get('MESSAGE', ''))
@@ -198,14 +198,14 @@ class FilterSystemd(JournalFilter): # pragma: systemd no cover
 			# Python 3, one or more elements bytes
 			logSys.warning("Error decoding log elements from journal: %s" %
 				repr(logelements))
-			logline =  cls._joinStrAndBytes(logelements)
+			logline = cls._joinStrAndBytes(logelements)
 
 		date = logentry.get('_SOURCE_REALTIME_TIMESTAMP',
 				logentry.get('__REALTIME_TIMESTAMP'))
 		logSys.debug("Read systemd journal entry: %r" %
 			"".join([date.isoformat(), logline]))
 		return (('', date.isoformat(), logline),
-			time.mktime(date.timetuple()) + date.microsecond/1.0E6)
+			time.mktime(date.timetuple()) + date.microsecond / 1.0E6)
 
 	##
 	# Main loop.

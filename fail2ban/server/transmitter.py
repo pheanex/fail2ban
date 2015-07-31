@@ -170,7 +170,7 @@ class Transmitter:
 			value = command[2]
 			tail = False
 			if len(command) == 4:
-				if command[3].lower()  == "tail":
+				if command[3].lower() == "tail":
 					tail = True
 				elif command[3].lower() != "head":
 					raise ValueError("File option must be 'head' or 'tail'")
@@ -237,7 +237,7 @@ class Transmitter:
 			return self.__server.getBanTime(name)
 		elif command[1] == "banip":
 			value = command[2]
-			return self.__server.setBanIP(name,value)
+			return self.__server.setBanIP(name, value)
 		elif command[1] == "unbanip":
 			value = command[2]
 			self.__server.setUnbanIP(name, value)
@@ -257,7 +257,7 @@ class Transmitter:
 			actionkey = command[3]
 			action = self.__server.getAction(name, actionname)
 			if callable(getattr(action, actionkey, None)):
-				actionvalue = json.loads(command[4]) if len(command)>4 else {}
+				actionvalue = json.loads(command[4]) if len(command) > 4 else {}
 				return getattr(action, actionkey)(**actionvalue)
 			else:
 				actionvalue = command[4]

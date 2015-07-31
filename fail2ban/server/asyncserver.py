@@ -34,7 +34,7 @@ import sys
 import traceback
 
 from ..protocol import CSPROTO
-from ..helpers import getLogger,formatExceptionInfo
+from ..helpers import getLogger, formatExceptionInfo
 
 # Gets the instance of the logger.
 logSys = getLogger(__name__)
@@ -182,7 +182,7 @@ class AsyncServer(asyncore.dispatcher):
 	def __markCloseOnExec(sock):
 		fd = sock.fileno()
 		flags = fcntl.fcntl(fd, fcntl.F_GETFD)
-		fcntl.fcntl(fd, fcntl.F_SETFD, flags|fcntl.FD_CLOEXEC)
+		fcntl.fcntl(fd, fcntl.F_SETFD, flags | fcntl.FD_CLOEXEC)
 
 
 ##

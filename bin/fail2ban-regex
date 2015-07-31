@@ -58,16 +58,16 @@ from fail2ban.helpers import FormatterWithTraceBack, getLogger
 logSys = getLogger("fail2ban")
 
 def debuggexURL(sample, regex):
-	q = urllib.urlencode({ 're': regex.replace('<HOST>', '(?&.ipv4)'),
+	q = urllib.urlencode({'re': regex.replace('<HOST>', '(?&.ipv4)'),
 							'str': sample,
-							'flavor': 'python' })
+							'flavor': 'python'})
 	return 'http://www.debuggex.com/?' + q
 
 def shortstr(s, l=53):
 	"""Return shortened string
 	"""
 	if len(s) > l:
-		return s[:l-3] + '...'
+		return s[:l - 3] + '...'
 	return s
 
 def pprint_list(l, header=None):
@@ -101,7 +101,7 @@ def journal_lines_gen(myjournal):
 def get_opt_parser():
 	# use module docstring for help output
 	p = OptionParser(
-				usage="%s [OPTIONS] <LOG> <REGEX> [IGNOREREGEX]\n" % sys.argv[0] + __doc__
+				usage = "%s [OPTIONS] <LOG> <REGEX> [IGNOREREGEX]\n" % sys.argv[0] + __doc__
 				+ """
 LOG:
     string                  a string representing a log line
@@ -228,7 +228,7 @@ class Fail2banRegex(object):
 		self._datepattern_set = False
 		self._journalmatch = None
 
-		self.share_config=dict()
+		self.share_config = dict()
 		self._filter = Filter(None)
 		self._ignoreregex = list()
 		self._failregex = list()
@@ -341,7 +341,7 @@ class Fail2banRegex(object):
 			for match in ret:
 				# Append True/False flag depending if line was matched by
 				# more than one regex
-				match.append(len(ret)>1)
+				match.append(len(ret) > 1)
 				regex = self._failregex[match[0]]
 				regex.inc()
 				regex.appendIP(match)
@@ -422,8 +422,8 @@ class Fail2banRegex(object):
 				if lines < self._maxlines or getattr(self, '_print_all_' + ltype):
 					ans = [[]]
 					for arg in [l, regexlist]:
-						ans = [ x + [y] for x in ans for y in arg ]
-					b = map(lambda a: a[0] +  ' | ' + a[1].getFailRegex() + ' |  ' + debuggexURL(a[0], a[1].getFailRegex()), ans)
+						ans = [x + [y] for x in ans for y in arg]
+					b = map(lambda a: a[0] + ' | ' + a[1].getFailRegex() + ' |  ' + debuggexURL(a[0], a[1].getFailRegex()), ans)
 					pprint_list([x.rstrip() for x in b], header)
 				else:
 					print "%s too many to print.  Use --print-all-%s " \
@@ -446,7 +446,7 @@ class Fail2banRegex(object):
 				match = failregex.getStats()
 				total += match
 				if match or self._verbose:
-					out.append("%2d) [%d] %s" % (cnt+1, match, failregex.getFailRegex()))
+					out.append("%2d) [%d] %s" % (cnt + 1, match, failregex.getFailRegex()))
 
 				if self._verbose and len(failregex.getIPList()):
 					for ip in failregex.getIPList():
@@ -583,7 +583,7 @@ if __name__ == "__main__":
 		test_lines = journal_lines_gen(myjournal)
 	else:
 		print "Use      single line : %s" % shortstr(cmd_log)
-		test_lines = [ cmd_log ]
+		test_lines = [cmd_log]
 	print
 
 	fail2banRegex.process(test_lines)

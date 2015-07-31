@@ -165,8 +165,8 @@ class ConfigReaderUnshared(SafeConfigParserWithIncludes):
 			raise ValueError("Base configuration directory %s does not exist "
 							  % self._basedir)
 		basename = os.path.join(self._basedir, filename)
-		logSys.debug("Reading configs for %s under %s " , filename, self._basedir)
-		config_files = [ basename + ".conf" ]
+		logSys.debug("Reading configs for %s under %s ", filename, self._basedir)
+		config_files = [basename + ".conf"]
 
 		# possible further customizations under a .conf.d directory
 		config_dir = basename + '.d'
@@ -183,7 +183,7 @@ class ConfigReaderUnshared(SafeConfigParserWithIncludes):
 			# at least one config exists and accessible
 			logSys.debug("Reading config files: %s", ', '.join(config_files))
 			config_files_read = SafeConfigParserWithIncludes.read(self, config_files)
-			missed = [ cf for cf in config_files if cf not in config_files_read ]
+			missed = [cf for cf in config_files if cf not in config_files_read]
 			if missed:
 				logSys.error("Could not read config files: %s", ', '.join(missed))
 			if config_files_read:

@@ -65,7 +65,7 @@ class Fail2banServer:
 	def dispUsage(self):
 		""" Prints Fail2Ban command line options and exits
 		"""
-		print "Usage: "+self.__argv[0]+" [OPTIONS]"
+		print "Usage: " + self.__argv[0] + " [OPTIONS]"
 		print
 		print "Fail2Ban v" + version + " reads log file that contains password failure report"
 		print "and bans the corresponding IP addresses using firewall rules."

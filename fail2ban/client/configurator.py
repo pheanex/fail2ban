@@ -72,7 +72,7 @@ class Configurator:
 	def getEarlyOptions(self):
 		return self.__fail2ban.getEarlyOptions()
 
-	def getOptions(self, jail = None):
+	def getOptions(self, jail=None):
 		self.__fail2ban.getOptions()
 		return self.__jails.getOptions(jail)
 

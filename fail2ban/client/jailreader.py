@@ -252,6 +252,6 @@ class JailReader(ConfigReader):
 			for optmatch in JailReader.optionExtractRE.finditer(optstr):
 				opt = optmatch.group(1)
 				value = [
-					val for val in optmatch.group(2,3,4) if val is not None][0]
+					val for val in optmatch.group(2, 3, 4) if val is not None][0]
 				option_opts[opt.strip()] = value.strip()
 		return option_name, option_opts

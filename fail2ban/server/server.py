@@ -51,7 +51,7 @@ except ImportError:
 
 class Server:
 
-	def __init__(self, daemon = False):
+	def __init__(self, daemon=False):
 		self.__loggingLock = Lock()
 		self.__lock = RLock()
 		self.__jails = Jails()
@@ -63,7 +63,7 @@ class Server:
 		self.__logTarget = None
 		self.__syslogSocket = None
 		self.__autoSyslogSocketPaths = {
-			'Darwin':  '/var/run/syslog',
+			'Darwin': '/var/run/syslog',
 			'FreeBSD': '/var/run/log',
 			'Linux': '/dev/log',
 		}
@@ -80,7 +80,7 @@ class Server:
 		logSys.debug("Caught signal %d. Flushing logs" % signum)
 		self.flushLogs()
 
-	def start(self, sock, pidfile, force = False):
+	def start(self, sock, pidfile, force=False):
 		logSys.info("Starting Fail2ban v" + version.version)
 
 		# Install signal handlers
@@ -435,8 +435,8 @@ class Server:
 					# Is known to be thrown after logging was shutdown once
 					# with older Pythons -- seems to be safe to ignore there
 					# At least it was still failing on 2.6.2-0ubuntu1 (jaunty)
-					if (2,6,3) <= sys.version_info < (3,) or \
-							(3,2) <= sys.version_info:
+					if (2, 6, 3) <= sys.version_info < (3,) or \
+							(3, 2) <= sys.version_info:
 						raise
 			# tell the handler to use this format
 			hdlr.setFormatter(formatter)

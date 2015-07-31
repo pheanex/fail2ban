@@ -124,7 +124,7 @@ class Beautifier:
 					msg = "Current monitored log file(s):\n"
 					for path in response[:-1]:
 						msg = msg + "|- " + path + "\n"
-					msg = msg + "`- " + response[len(response)-1]
+					msg = msg + "`- " + response[len(response) - 1]
 			elif inC[2] == "logencoding":
 				msg = "Current log encoding is set to:\n"
 				msg = msg + response
@@ -149,7 +149,7 @@ class Beautifier:
 					msg = "These IP addresses/networks are ignored:\n"
 					for ip in response[:-1]:
 						msg = msg + "|- " + ip + "\n"
-					msg = msg + "`- " + response[len(response)-1]
+					msg = msg + "`- " + response[len(response) - 1]
 			elif inC[2] in ("failregex", "addfailregex", "delfailregex",
 							"ignoreregex", "addignoreregex", "delignoreregex"):
 				if len(response) == 0:
@@ -160,7 +160,7 @@ class Beautifier:
 					for ip in response[:-1]:
 						msg = msg + "|- [" + str(c) + "]: " + ip + "\n"
 						c += 1
-					msg = msg + "`- [" + str(c) + "]: " + response[len(response)-1]
+					msg = msg + "`- [" + str(c) + "]: " + response[len(response) - 1]
 			elif inC[2] == "actions":
 				if len(response) == 0:
 					msg = "No actions for jail %s" % inC[1]

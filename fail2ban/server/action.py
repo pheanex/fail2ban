@@ -415,7 +415,7 @@ class CommandAction(ActionBase):
 						# constructs like <STDIN>.
 						m = t.search(value, m.end())
 						continue
-					value = value.replace('<%s>' % found_tag , tags[found_tag])
+					value = value.replace('<%s>' % found_tag, tags[found_tag])
 					#logSys.log(5, 'value now: %s' % value)
 					done.append(found_tag)
 					m = t.search(value, m.start())
@@ -486,7 +486,7 @@ class CommandAction(ActionBase):
 		string = string.replace("<br>", '\n')
 		return string
 
-	def _processCmd(self, cmd, aInfo = None):
+	def _processCmd(self, cmd, aInfo=None):
 		"""Executes a command with preliminary checks and substitutions.
 
 		Before executing any commands, executes the "check" command first

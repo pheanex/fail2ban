@@ -113,7 +113,7 @@ class FailManager:
 				# in case of having many active failures, it should be ran only
 				# if debug level is "low" enough
 				failures_summary = ', '.join(['%s:%d' % (k, v.getRetry())
-											  for k,v in  self.__failList.iteritems()])
+											  for k, v in self.__failList.iteritems()])
 				logSys.debug("Total # of detected failures: %d. Current failures from %d IPs (IP:count): %s"
 							 % (self.__failTotal, len(self.__failList), failures_summary))
 		finally:

@@ -85,7 +85,7 @@ class Regex:
 			# Find start of the first line where the match was found
 			try:
 				self._matchLineStart = self._matchCache.string.rindex(
-					"\n", 0, self._matchCache.start() +1 ) + 1
+					"\n", 0, self._matchCache.start() + 1) + 1
 			except ValueError:
 				self._matchLineStart = 0
 			# Find end of the last line where the match was found
@@ -108,7 +108,7 @@ class Regex:
 					self._matchedTupleLines[n:]):
 					if "".join(matchedTupleLine[::2]) == skippedLine:
 						self._unmatchedTupleLines.append(
-							self._matchedTupleLines.pop(n+m))
+							self._matchedTupleLines.pop(n + m))
 						n += m
 						break
 			self._unmatchedTupleLines.extend(tupleLines[lineCount2:])

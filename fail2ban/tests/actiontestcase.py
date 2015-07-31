@@ -60,19 +60,19 @@ class CommandActionTest(LogCaptureTestCase):
 		self.assertFalse(CommandAction.substituteRecursiveTags({'failregex': 'to=<honeypot> fromip=<IP>', 'sweet': '<honeypot>', 'honeypot': '<sweet>', 'ignoreregex': ''}))
 		# missing tags are ok
 		self.assertEqual(CommandAction.substituteRecursiveTags({'A': '<C>'}), {'A': '<C>'})
-		self.assertEqual(CommandAction.substituteRecursiveTags({'A': '<C> <D> <X>','X':'fun'}), {'A': '<C> <D> fun', 'X':'fun'})
+		self.assertEqual(CommandAction.substituteRecursiveTags({'A': '<C> <D> <X>', 'X': 'fun'}), {'A': '<C> <D> fun', 'X': 'fun'})
 		self.assertEqual(CommandAction.substituteRecursiveTags({'A': '<C> <B>', 'B': 'cool'}), {'A': '<C> cool', 'B': 'cool'})
 		# Escaped tags should be ignored
 		self.assertEqual(CommandAction.substituteRecursiveTags({'A': '<matches> <B>', 'B': 'cool'}), {'A': '<matches> cool', 'B': 'cool'})
 		# Multiple stuff on same line is ok
 		self.assertEqual(CommandAction.substituteRecursiveTags({'failregex': 'to=<honeypot> fromip=<IP> evilperson=<honeypot>', 'honeypot': 'pokie', 'ignoreregex': ''}),
-								{ 'failregex': "to=pokie fromip=<IP> evilperson=pokie",
+								{'failregex': "to=pokie fromip=<IP> evilperson=pokie",
 									'honeypot': 'pokie',
 									'ignoreregex': '',
 								})
 		# rest is just cool
 		self.assertEqual(CommandAction.substituteRecursiveTags(aInfo),
-								{ 'HOST': "192.0.2.0",
+								{'HOST': "192.0.2.0",
 									'ABC': '123 192.0.2.0',
 									'xyz': '890 123 192.0.2.0',
 								})
@@ -173,7 +173,7 @@ class CommandActionTest(LogCaptureTestCase):
 	def testExecuteActionChangeCtags(self):
 		self.assertRaises(AttributeError, getattr, self.__action, "ROST")
 		self.__action.ROST = "192.0.2.0"
-		self.assertEqual(self.__action.ROST,"192.0.2.0")
+		self.assertEqual(self.__action.ROST, "192.0.2.0")
 
 	def testExecuteActionUnbanAinfo(self):
 		aInfo = {
@@ -252,7 +252,7 @@ class CommandActionTest(LogCaptureTestCase):
 
 	def testCallingMap(self):
 		mymap = CallingMap(callme=lambda: str(10), error=lambda: int('a'),
-			dontcallme= "string", number=17)
+			dontcallme="string", number=17)
 
 		# Should work fine
 		self.assertEqual(
