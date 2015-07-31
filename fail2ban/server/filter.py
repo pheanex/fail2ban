@@ -26,7 +26,6 @@ import fcntl
 import locale
 import os
 import re
-import sys
 
 from .failmanager import FailManagerEmpty, FailManager
 from .ticket import FailTicket

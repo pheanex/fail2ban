@@ -28,7 +28,6 @@ __license__ = "GPL"
 from pickle import dumps, loads, HIGHEST_PROTOCOL
 from ..protocol import CSPROTO
 import socket
-import sys
 
 
 class CSocket:
@@ -37,7 +36,7 @@ class CSocket:
 		# Create an INET, STREAMing socket
 		#self.csock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.__csock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-		#self.csock.connect(("localhost", 2222))
+		#self.csock.connect(("localho", 2222))
 		self.__csock.connect(sock)
 
 	def __del__(self):

@@ -25,12 +25,9 @@ __license__ = "GPL"
 import getopt
 import logging
 import os
-import pickle
-import re
 import shlex
 import signal
 import socket
-import string
 import sys
 import time
 

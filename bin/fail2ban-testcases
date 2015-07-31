@@ -27,7 +27,6 @@ __license__ = "GPL"
 import logging
 import os
 import sys
-import time
 import unittest
 
 # Check if local fail2ban module exists, and use if it exists by
@@ -39,7 +38,6 @@ from fail2ban.version import version
 
 from fail2ban.tests.utils import gatherTests
 from fail2ban.helpers import FormatterWithTraceBack, getLogger
-from fail2ban.server.mytime import MyTime
 
 from optparse import OptionParser, Option
 

@@ -25,7 +25,6 @@ __license__ = "GPL"
 import logging
 import os
 import re
-import sys
 import time
 import unittest
 from StringIO import StringIO
