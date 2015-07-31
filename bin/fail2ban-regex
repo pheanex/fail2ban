@@ -107,7 +107,7 @@ def journal_lines_gen(myjournal):
 def get_opt_parser():
 	# use module docstring for help output
 	p = OptionParser(
-				usage = "%s [OPTIONS] <LOG> <REGEX> [IGNOREREGEX]\n" % sys.argv[0] + __doc__
+				usage="%s [OPTIONS] <LOG> <REGEX> [IGNOREREGEX]\n" % sys.argv[0] + __doc__
 				+ """
 LOG:
     string                  a string representing a log line

@@ -47,7 +47,7 @@ from optparse import OptionParser, Option
 def get_opt_parser():
 	# use module docstring for help output
 	p = OptionParser(
-				usage = "%s [OPTIONS] [regexps]\n" % sys.argv[0] + __doc__,
+				usage="%s [OPTIONS] [regexps]\n" % sys.argv[0] + __doc__,
 				version="%prog " + version)
 
 	p.add_options([
