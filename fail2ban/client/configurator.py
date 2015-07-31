@@ -87,4 +87,3 @@ class Configurator:
 		for opt in self.__streams["jails"]:
 			cmds.append(opt)
 		return cmds
-

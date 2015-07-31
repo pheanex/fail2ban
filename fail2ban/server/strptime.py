@@ -192,4 +192,3 @@ def reGroupDictStrptime(found_dict):
 		return calendar.timegm(date_result.utctimetuple())
 	else:
 		return time.mktime(date_result.timetuple())
-

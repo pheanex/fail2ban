@@ -41,6 +41,7 @@ logSys = getLogger("fail2ban")
 # Fail2ban is designed to protect your server against brute force attacks.
 # Its first goal was to protect a SSH server.
 
+
 class Fail2banServer:
 
 	def __init__(self):

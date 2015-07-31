@@ -30,6 +30,7 @@ from ..protocol import CSPROTO
 import socket
 import sys
 
+
 class CSocket:
 
 	def __init__(self, sock="/var/run/fail2ban/fail2ban.sock"):

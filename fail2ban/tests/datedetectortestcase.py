@@ -170,4 +170,3 @@ class DateDetectorTest(unittest.TestCase):
 #
 #		self.assertEqual(self.__datedetector.getTime(log), date)
 #		self.assertEqual(self.__datedetector.getUnixTime(log), dateUnix)
-

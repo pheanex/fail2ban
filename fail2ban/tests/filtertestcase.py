@@ -1055,4 +1055,3 @@ class JailTests(unittest.TestCase):
 		# smoke test
 		# Must not fail to initiate
 		Jail('test', backend='polling')
-

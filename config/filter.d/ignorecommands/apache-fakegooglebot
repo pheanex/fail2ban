@@ -6,6 +6,7 @@
 #
 import sys
 
+
 def process_args(argv):
     if len(argv) != 2:
        sys.stderr.write("Please provide a single IP as an argument. Got: %s\n"
@@ -20,6 +21,7 @@ def process_args(argv):
                         % ip)
        sys.exit(3)
     return ip
+
 
 def is_googlebot(ip):
     import re

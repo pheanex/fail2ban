@@ -106,4 +106,3 @@ class JailsReader(ConfigReader):
 			stream.append(["start", jail.getName()])
 
 		return stream
-

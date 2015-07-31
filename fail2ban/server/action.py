@@ -614,4 +614,3 @@ class CommandAction(ActionBase):
 							% (retcode, msg % locals()))
 			return False
 		raise RuntimeError("Command execution failed: %s" % realCmd)
-

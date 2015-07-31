@@ -548,4 +548,3 @@ class Fail2BanDb(object):
 		cur.execute(
 			"DELETE FROM jails WHERE enabled = 0 "
 				"AND NOT EXISTS(SELECT * FROM bans WHERE jail = jails.name)")
-

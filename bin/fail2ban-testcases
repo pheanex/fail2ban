@@ -43,6 +43,7 @@ from fail2ban.server.mytime import MyTime
 
 from optparse import OptionParser, Option
 
+
 def get_opt_parser():
 	# use module docstring for help output
 	p = OptionParser(

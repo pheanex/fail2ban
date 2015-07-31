@@ -33,6 +33,7 @@ from ..server.action import CommandAction, CallingMap
 from .utils import LogCaptureTestCase
 from .utils import pid_exists
 
+
 class CommandActionTest(LogCaptureTestCase):
 
 	def setUp(self):
@@ -240,7 +241,6 @@ class CommandActionTest(LogCaptureTestCase):
 
 		os.unlink(tmpFilename)
 		os.unlink(tmpFilename + '.pid')
-
 
 	def testCaptureStdOutErr(self):
 		CommandAction.executeCmd('echo "How now brown cow"')

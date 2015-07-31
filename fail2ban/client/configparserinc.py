@@ -259,4 +259,3 @@ after = 1.conf
 			if pref == '' or not k.startswith(pref):
 				sk[pref + k] = v
 		alls[section].update(sk)
-

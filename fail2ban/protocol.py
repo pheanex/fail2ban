@@ -29,6 +29,7 @@ import textwrap
 ##
 # Describes the protocol used to communicate with the server.
 
+
 class dotdict(dict):
 	def __getattr__(self, name):
 		return self[name]

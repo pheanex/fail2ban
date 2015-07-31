@@ -88,4 +88,3 @@ class FilterReader(DefinitionInitConfigReader):
 						["set", self._jailName, "addjournalmatch"] +
                         shlex.split(match))
 		return stream
-

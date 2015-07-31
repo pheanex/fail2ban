@@ -48,6 +48,7 @@ logSys = getLogger("fail2ban")
 #
 # @todo This class needs cleanup.
 
+
 class Fail2banClient:
 
 	SERVER = "fail2ban-server"
@@ -280,7 +281,6 @@ class Fail2banClient:
 		else:
 			return self.__processCmd([cmd])
 
-
 	##
 	# Start Fail2Ban server.
 	#
@@ -306,7 +306,7 @@ class Fail2banClient:
 				args.append("-b")
 			else:
 				args.append("-f")
-			
+
 			try:
 				# Use the current directory.
 				exe = os.path.abspath(os.path.join(sys.path[0], self.SERVER))
@@ -348,7 +348,6 @@ class Fail2banClient:
 			cnt += 1
 		if self.__conf["verbose"] > 1:
 			sys.stdout.write('\n')
-
 
 	def start(self, argv):
 		# Command line options

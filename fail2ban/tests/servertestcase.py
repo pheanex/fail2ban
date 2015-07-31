@@ -542,6 +542,7 @@ class Transmitter(TransmitterBase):
 		else:
 			value = []
 
+		# noinspection PyPep8
 		self.assertEqual(self.transm.proceed(["status", self.jailName, "cymru"]),
 			(0,
 				[
