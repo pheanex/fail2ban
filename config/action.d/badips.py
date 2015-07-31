@@ -126,7 +126,7 @@ class BadIPsAction(ActionBase):
 			raise
 		else:
 			response_json = json.loads(response.read().decode('utf-8'))
-			if not 'categories' in response_json:
+			if 'categories' not in response_json:
 				err = "badips.com response lacked categories specification. Response was: %s" \
 				  % (response_json,)
 				self._logSys.error(err)

@@ -151,7 +151,7 @@ class DateDetector(object):
 		try:
 			for template in self.__templates:
 				match = template.matchDate(line)
-				if not match is None:
+				if match not is None:
 					logSys.debug("Matched time template %s" % template.name)
 					template.hits += 1
 					return match

@@ -442,7 +442,7 @@ class Server:
 			hdlr.setFormatter(formatter)
 			logger.addHandler(hdlr)
 			# Does not display this message at startup.
-			if not self.__logTarget is None:
+			if self.__logTarget is not None:
 				logSys.info(
 					"Changed logging target to %s for Fail2ban v%s"
 					% ((target

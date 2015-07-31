@@ -83,7 +83,7 @@ class FilterPyinotify(FileFilter):
 				logSys.debug("Ignoring creation of directory %s", path)
 				return
 			# check if that is a file we care about
-			if not path in self.__watches:
+			if path not in self.__watches:
 				logSys.debug("Ignoring creation of %s we do not monitor", path)
 				return
 			else:

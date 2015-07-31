@@ -810,7 +810,7 @@ class FileContainer:
 		return line
 
 	def close(self):
-		if not self.__handler is None:
+		if self.__handler is not None:
 			# Saves the last position.
 			self.__pos = self.__handler.tell()
 			# Closes the file.
@@ -903,7 +903,7 @@ class DNSUtils:
 		ipList = list()
 		# Search for plain IP
 		plainIP = DNSUtils.searchIP(text)
-		if not plainIP is None:
+		if plainIP is not None:
 			plainIPStr = plainIP.group(0)
 			if DNSUtils.isValidIP(plainIPStr):
 				ipList.append(plainIPStr)

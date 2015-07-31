@@ -218,7 +218,7 @@ class ConfigReaderUnshared(SafeConfigParserWithIncludes):
 					v = self.getint(sec, option[1])
 				else:
 					v = self.get(sec, option[1])
-				if not pOptions is None and option[1] in pOptions:
+				if pOptions is not None and option[1] in pOptions:
 					continue
 				values[option[1]] = v
 			except NoSectionError, e:
@@ -285,7 +285,7 @@ class DefinitionInitConfigReader(ConfigReader):
 
 		if self.has_section("Init"):
 			for opt in self.options("Init"):
-				if not opt in self._initOpts:
+				if opt not in self._initOpts:
 					self._initOpts[opt] = self.get("Init", opt)
 
 	def convert(self):
