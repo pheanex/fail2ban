@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 # Author: Cyril Jaquier
-# 
+#
 
 __author__ = "Cyril Jaquier"
 __copyright__ = "Copyright (c) 2004 Cyril Jaquier"
@@ -46,7 +46,7 @@ logSys = getLogger(__name__)
 # incoming query.
 
 class RequestHandler(asynchat.async_chat):
-	
+
 	def __init__(self, conn, transmitter):
 		asynchat.async_chat.__init__(self, conn)
 		self.__transmitter = transmitter
@@ -66,7 +66,7 @@ class RequestHandler(asynchat.async_chat):
 	def found_terminator(self):
 		# Pop whole buffer
 		message = self.__buffer
-		self.__buffer = []		
+		self.__buffer = []
 		# Joins the buffer items.
 		message = CSPROTO.EMPTY.join(message)
 		# Closes the channel if close was received
@@ -81,13 +81,13 @@ class RequestHandler(asynchat.async_chat):
 		message = dumps(message, HIGHEST_PROTOCOL)
 		# Sends the response to the client.
 		self.push(message + CSPROTO.END)
-		
+
 	def handle_error(self):
 		e1, e2 = formatExceptionInfo()
 		logSys.error("Unexpected communication error: %s" % str(e2))
 		logSys.error(traceback.format_exc().splitlines())
 		self.close()
-		
+
 
 ##
 # Asynchronous server class.
@@ -122,13 +122,13 @@ class AsyncServer(asyncore.dispatcher):
 		# Creates an instance of the handler class to handle the
 		# request/response on the incoming connection.
 		RequestHandler(conn, self.__transmitter)
-	
+
 	##
 	# Starts the communication server.
 	#
 	# @param sock: socket file.
 	# @param force: remove the socket file if exists.
-	
+
 	def start(self, sock, force):
 		self.__sock = sock
 		# Remove socket
@@ -152,16 +152,16 @@ class AsyncServer(asyncore.dispatcher):
 		self.__init = True
 		# TODO Add try..catch
 		# There's a bug report for Python 2.6/3.0 that use_poll=True yields some 2.5 incompatibilities:
-		if (sys.version_info >= (2, 7) and sys.version_info < (2, 8)) \
+		if ((2, 7) <= sys.version_info < (2, 8)) \
 		   or (sys.version_info >= (3, 4)): # if python 2.7 ...
 			logSys.debug("Detected Python 2.7. asyncore.loop() using poll")
 			asyncore.loop(use_poll=True) # workaround for the "Bad file descriptor" issue on Python 2.7, gh-161
 		else:
 			asyncore.loop(use_poll=False) # fixes the "Unexpected communication problem" issue on Python 2.6 and 3.0
-	
+
 	##
 	# Stops the communication server.
-	
+
 	def stop(self):
 		if self.__init:
 			# Only closes the socket if it was initialized first.
@@ -177,7 +177,7 @@ class AsyncServer(asyncore.dispatcher):
 	# running actions involving command execution.
 
 	# @param sock: socket file.
-	
+
 	@staticmethod
 	def __markCloseOnExec(sock):
 		fd = sock.fileno()

@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 # Author: Cyril Jaquier
-# 
+#
 
 __author__ = "Cyril Jaquier"
 __copyright__ = "Copyright (c) 2004 Cyril Jaquier"
@@ -199,8 +199,8 @@ class CommandActionTest(LogCaptureTestCase):
 		self.assertRaises(
 			RuntimeError, CommandAction.executeCmd, 'sleep 60', timeout=2)
 		# give a test still 1 second, because system could be too busy
-		self.assertTrue(time.time() >= stime + 2 and time.time() <= stime + 3)
-		self.assertTrue(self._is_logged('sleep 60 -- timed out after 2 seconds') 
+		self.assertTrue(stime + 2 <= time.time() <= stime + 3)
+		self.assertTrue(self._is_logged('sleep 60 -- timed out after 2 seconds')
 			or self._is_logged('sleep 60 -- timed out after 3 seconds'))
 		self.assertTrue(self._is_logged('sleep 60 -- killed with SIGTERM'))
 
