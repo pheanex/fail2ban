@@ -132,9 +132,9 @@ class Fail2banClient:
 			elif opt[0] == "-d":
 				self.__conf["dump"] = True
 			elif opt[0] == "-v":
-				self.__conf["verbose"] = self.__conf["verbose"] + 1
+				self.__conf["verbose"] += 1
 			elif opt[0] == "-q":
-				self.__conf["verbose"] = self.__conf["verbose"] - 1
+				self.__conf["verbose"] -= 1
 			elif opt[0] == "-x":
 				self.__conf["force"] = True
 			elif opt[0] == "-i":

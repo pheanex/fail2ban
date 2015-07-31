@@ -143,7 +143,7 @@ realm = v['Digest realm'][1:-1]
 (t,) = struct.unpack('l', base64.b64decode(v['nonce'][1:13]))
 
 # whee, time travel
-t = t + 5540
+t += 5540
 
 timepac = base64.b64encode(struct.pack('l', t))
 
