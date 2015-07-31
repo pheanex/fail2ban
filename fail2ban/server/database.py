@@ -428,10 +428,10 @@ class Fail2BanDb(object):
 		ip : str
 			IP to be removed.
 		"""
-		queryArgs = (jail.name, ip);
+		queryArgs = (jail.name, ip)
 		cur.execute(
 			"DELETE FROM bans WHERE jail = ? AND ip = ?",
-			queryArgs);
+			queryArgs)
 
 	@commitandrollback
 	def _getBans(self, cur, jail=None, bantime=None, ip=None):
