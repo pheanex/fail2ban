@@ -15,10 +15,10 @@ def auth(v):
 
     ha1 = md5sum(username + ':' + realm + ':' + password).hexdigest()
     ha2 = md5sum("GET:" + url).hexdigest()
-    
+
     #response = md5sum(ha1 + ':' + v['nonce'][1:-1] + ':' + v['nc'] + ':' + v['cnonce'][1:-1]
     #                  + ':' + v['qop'][1:-1] + ':' + ha2).hexdigest()
-    
+
     nonce = v['nonce'][1:-1]
     nc=v.get('nc') or ''
     cnonce = v.get('cnonce') or ''
@@ -26,9 +26,9 @@ def auth(v):
     qop = v['qop'][1:-1]
     algorithm = v['algorithm']
     response = md5sum(ha1 + ':' + nonce + ':' + nc + ':' + cnonce + ':' + qop + ':' + ha2).hexdigest()
-    
+
     p = requests.Request('GET', host + url).prepare()
-    #p.headers['Authentication-Info'] = response 
+    #p.headers['Authentication-Info'] = response
     p.headers['Authorization'] = """
         Digest username="%s",
         algorithm="%s",

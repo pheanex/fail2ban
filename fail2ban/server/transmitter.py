@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 # Author: Cyril Jaquier
-# 
+#
 
 __author__ = "Cyril Jaquier"
 __copyright__ = "Copyright (c) 2004 Cyril Jaquier"
@@ -35,21 +35,21 @@ logSys = getLogger(__name__)
 
 
 class Transmitter:
-	
+
 	##
 	# Constructor.
 	#
 	# @param The server reference
-	
+
 	def __init__(self, server):
 		self.__server = server
-		
+
 	##
 	# Proceeds a command.
 	#
 	# Proceeds an incoming command.
 	# @param command The incoming command
-	
+
 	def proceed(self, command):
 		# Deserialize object
 		logSys.debug("Command: " + repr(command))
@@ -61,12 +61,12 @@ class Transmitter:
 						% (command, e))
 			ack = 1, e
 		return ack
-	
+
 	##
 	# Handle an command.
 	#
-	# 
-	
+	#
+
 	def __commandHandler(self, command):
 		if command[0] == "ping":
 			return "pong"
@@ -108,7 +108,7 @@ class Transmitter:
 		elif command[0] == "version":
 			return version.version
 		raise Exception("Invalid command")
-	
+
 	def __commandSet(self, command):
 		name = command[0]
 		# Logging
@@ -264,7 +264,7 @@ class Transmitter:
 				setattr(action, actionkey, actionvalue)
 				return getattr(action, actionkey)
 		raise Exception("Invalid command (no set action or not yet implemented)")
-	
+
 	def __commandGet(self, command):
 		name = command[0]
 		# Logging
@@ -336,7 +336,7 @@ class Transmitter:
 				key for key in dir(action)
 				if not key.startswith("_") and callable(getattr(action, key))]
 		raise Exception("Invalid command (no get action or not yet implemented)")
-	
+
 	def status(self, command):
 		if len(command) == 0:
 			return self.__server.status()

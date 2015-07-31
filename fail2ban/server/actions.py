@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 # Author: Cyril Jaquier
-# 
+#
 
 __author__ = "Cyril Jaquier"
 __copyright__ = "Copyright (c) 2004 Cyril Jaquier"
@@ -165,16 +165,16 @@ class Actions(JailThread, Mapping):
 	# Set the ban time.
 	#
 	# @param value the time
-	
+
 	def setBanTime(self, value):
 		self.__banManager.setBanTime(value)
 		logSys.info("Set banTime = %s" % value)
-	
+
 	##
 	# Get the ban time.
 	#
 	# @return the time
-	
+
 	def getBanTime(self):
 		return self.__banManager.getBanTime()
 
@@ -264,7 +264,7 @@ class Actions(JailThread, Mapping):
 
 		Returns
 		-------
-		BanTicket 
+		BanTicket
 			merged or self ticket only
 		"""
 		idx = 'all' if overalljails else 'jail'

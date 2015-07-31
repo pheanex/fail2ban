@@ -128,11 +128,11 @@ def testSampleRegexsFactory(name):
 					jsonTimeLocal =	datetime.datetime.strptime(t, "%Y-%m-%dT%H:%M:%S.%f")
 
 				jsonTime = time.mktime(jsonTimeLocal.timetuple())
-				
+
 				jsonTime += jsonTimeLocal.microsecond / 1000000
 
 				self.assertEqual(fail2banTime, jsonTime,
-					"UTC Time  mismatch fail2ban %s (%s) != failJson %s (%s)  (diff %.3f seconds) on: %s:%i %r:" % 
+					"UTC Time  mismatch fail2ban %s (%s) != failJson %s (%s)  (diff %.3f seconds) on: %s:%i %r:" %
 					(fail2banTime, time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(fail2banTime)),
 					jsonTime, time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(jsonTime)),
 					fail2banTime - jsonTime, logFile.filename(), logFile.filelineno(), line ) )

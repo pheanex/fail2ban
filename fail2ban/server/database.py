@@ -430,7 +430,7 @@ class Fail2BanDb(object):
 		"""
 		queryArgs = (jail.name, ip);
 		cur.execute(
-			"DELETE FROM bans WHERE jail = ? AND ip = ?", 
+			"DELETE FROM bans WHERE jail = ? AND ip = ?",
 			queryArgs);
 
 	@commitandrollback

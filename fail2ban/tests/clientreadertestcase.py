@@ -167,7 +167,7 @@ class JailReaderTest(LogCaptureTestCase):
 	def testIncorrectJail(self):
 		jail = JailReader('XXXABSENTXXX', basedir=CONFIG_DIR, share_config = self.__share_cfg)
 		self.assertRaises(ValueError, jail.read)
-		
+
 	def testJailActionEmpty(self):
 		jail = JailReader('emptyaction', basedir=IMPERFECT_CONFIG, share_config = self.__share_cfg)
 		self.assertTrue(jail.read())
@@ -207,7 +207,7 @@ class JailReaderTest(LogCaptureTestCase):
 			self.assertEqual(jail.getName(), 'sshd')
 			jail.setName('ssh-funky-blocker')
 			self.assertEqual(jail.getName(), 'ssh-funky-blocker')
-		
+
 	def testSplitOption(self):
 		# Simple example
 		option = "mail-whois[name=SSH]"
@@ -271,7 +271,7 @@ class JailReaderTest(LogCaptureTestCase):
 		os.remove(f2)
 		os.rmdir(d)
 
-		
+
 class FilterReaderTest(unittest.TestCase):
 
 	def testConvert(self):
@@ -292,7 +292,7 @@ class FilterReaderTest(unittest.TestCase):
 			"[\\[\\(]?sshd(?:\\(\\S+\\))?[\\]\\)]?:?(?:\\[\\d+\\])?:)?\\s*(?:"
 			"error: PAM: )?User not known to the\\nunderlying authentication."
 			"+$<SKIPLINES>^.+ module for .* from <HOST>\\s*$"],
-			['set', 'testcase01', 'addignoreregex', 
+			['set', 'testcase01', 'addignoreregex',
 			"^.+ john from host 192.168.1.1\\s*$"],
 			['set', 'testcase01', 'addjournalmatch',
 				"_COMM=sshd", "+", "_SYSTEMD_UNIT=sshd.service", "_UID=0"],
@@ -349,7 +349,7 @@ class FilterReaderTest(unittest.TestCase):
 		# read explicit uses absolute path:
 		path_ = os.path.abspath(os.path.join(TEST_FILES_DIR, "filter.d"))
 		filterReader = FilterReader(os.path.join(path_, "testcase01.conf"), "testcase01", {})
-		self.assertEqual(filterReader.readexplicit(), 
+		self.assertEqual(filterReader.readexplicit(),
 			[os.path.join(path_, "testcase-common.conf"), os.path.join(path_, "testcase01.conf")]
 		)
 		try:

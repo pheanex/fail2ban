@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 # Author: Cyril Jaquier
-# 
+#
 
 __author__ = "Cyril Jaquier"
 __copyright__ = "Copyright (c) 2004 Cyril Jaquier"
@@ -57,7 +57,7 @@ class TestServer(Server):
 
 
 class TransmitterBase(unittest.TestCase):
-	
+
 	def setUp(self):
 		"""Call before every test case."""
 		self.transm = self.server._Server__transm

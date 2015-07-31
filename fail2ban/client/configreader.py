@@ -74,7 +74,7 @@ class ConfigReader():
 	def read(self, name, once=True):
 		""" Overloads a default (not shared) read of config reader.
 
-	  To prevent mutiple reads of config files with it includes, reads into 
+	  To prevent mutiple reads of config files with it includes, reads into
 	  the config reader, if it was not yet cached/shared by 'name'.
 	  """
 		# already shared ?
@@ -95,7 +95,7 @@ class ConfigReader():
 	def _create_unshared(self, name=''):
 		""" Allocates and share a config file by it name.
 
-	  Automatically allocates unshared or reuses shared handle by given 'name' and 
+	  Automatically allocates unshared or reuses shared handle by given 'name' and
 	  init arguments inside a given shared storage.
 	  """
 		if not self._cfg and self._cfg_share is not None:
@@ -146,20 +146,20 @@ class ConfigReaderUnshared(SafeConfigParserWithIncludes):
 	"""
 
 	DEFAULT_BASEDIR = '/etc/fail2ban'
-	
+
 	def __init__(self, basedir=None, *args, **kwargs):
 		SafeConfigParserWithIncludes.__init__(self, *args, **kwargs)
 		self.read_cfg_files = None
 		self.setBaseDir(basedir)
-	
+
 	def setBaseDir(self, basedir):
 		if basedir is None:
 			basedir = ConfigReaderUnshared.DEFAULT_BASEDIR	# stock system location
 		self._basedir = basedir.rstrip('/')
-	
+
 	def getBaseDir(self):
 		return self._basedir
-	
+
 	def read(self, filename):
 		if not os.path.exists(self._basedir):
 			raise ValueError("Base configuration directory %s does not exist "
@@ -173,7 +173,7 @@ class ConfigReaderUnshared(SafeConfigParserWithIncludes):
 		config_files += sorted(glob.glob('%s/*.conf' % config_dir))
 
 		config_files.append(basename + ".local")
-	
+
 		config_files += sorted(glob.glob('%s/*.local' % config_dir))
 
 		# choose only existing ones
@@ -207,7 +207,7 @@ class ConfigReaderUnshared(SafeConfigParserWithIncludes):
 	# 0 -> the type of the option
 	# 1 -> the name of the option
 	# 2 -> the default value for the option
-	
+
 	def getOptions(self, sec, options, pOptions=None):
 		values = dict()
 		for option in options:
@@ -250,26 +250,26 @@ class DefinitionInitConfigReader(ConfigReader):
 	"""
 
 	_configOpts = []
-	
+
 	def __init__(self, file_, jailName, initOpts, **kwargs):
 		ConfigReader.__init__(self, **kwargs)
 		self.setFile(file_)
 		self.setJailName(jailName)
 		self._initOpts = initOpts
-	
+
 	def setFile(self, fileName):
 		self._file = fileName
 		self._initOpts = {}
-	
+
 	def getFile(self):
 		return self._file
-	
+
 	def setJailName(self, jailName):
 		self._jailName = jailName
-	
+
 	def getJailName(self):
 		return self._jailName
-	
+
 	def read(self):
 		return ConfigReader.read(self, self._file)
 
@@ -278,15 +278,15 @@ class DefinitionInitConfigReader(ConfigReader):
 		if not self._cfg:
 			self._create_unshared(self._file)
 		return SafeConfigParserWithIncludes.read(self._cfg, self._file)
-	
+
 	def getOptions(self, pOpts):
 		self._opts = ConfigReader.getOptions(
 			self, "Definition", self._configOpts, pOpts)
-		
+
 		if self.has_section("Init"):
 			for opt in self.options("Init"):
 				if not opt in self._initOpts:
 					self._initOpts[opt] = self.get("Init", opt)
-	
+
 	def convert(self):
 		raise NotImplementedError

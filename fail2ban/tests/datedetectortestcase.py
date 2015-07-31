@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 # Author: Cyril Jaquier
-# 
+#
 
 __author__ = "Cyril Jaquier"
 __copyright__ = "Copyright (c) 2004 Cyril Jaquier"
@@ -44,7 +44,7 @@ class DateDetectorTest(unittest.TestCase):
 	def tearDown(self):
 		"""Call after every test case."""
 		tearDownMyTime()
-	
+
 	def testGetEpochTime(self):
 		log = "1138049999 [sshd] error: PAM: Authentication failure"
 		#date = [2006, 1, 23, 21, 59, 59, 0, 23, 0]
@@ -53,7 +53,7 @@ class DateDetectorTest(unittest.TestCase):
 		( datelog, matchlog ) = self.__datedetector.getTime(log)
 		self.assertEqual(datelog, dateUnix)
 		self.assertEqual(matchlog.group(), '1138049999')
-	
+
 	def testGetTime(self):
 		log = "Jan 23 21:59:59 [sshd] error: PAM: Authentication failure"
 		dateUnix = 1106513999.0
@@ -162,11 +162,11 @@ class DateDetectorTest(unittest.TestCase):
 #	def testDefaultTempate(self):
 #		self.__datedetector.setDefaultRegex("^\S{3}\s{1,2}\d{1,2} \d{2}:\d{2}:\d{2}")
 #		self.__datedetector.setDefaultPattern("%b %d %H:%M:%S")
-#		
+#
 #		log = "Jan 23 21:59:59 [sshd] error: PAM: Authentication failure"
 #		date = [2005, 1, 23, 21, 59, 59, 1, 23, -1]
 #		dateUnix = 1106513999.0
-#		
+#
 #		self.assertEqual(self.__datedetector.getTime(log), date)
 #		self.assertEqual(self.__datedetector.getUnixTime(log), dateUnix)
-	
+

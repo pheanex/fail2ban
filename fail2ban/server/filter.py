@@ -140,7 +140,7 @@ class Filter(JailThread):
 			self.__ignoreRegex.append(regex)
 		except RegexException, e:
 			logSys.error(e)
-			raise e 
+			raise e
 
 	def delIgnoreRegex(self, index):
 		try:

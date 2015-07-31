@@ -171,7 +171,7 @@ after = 1.conf
 		except UnicodeDecodeError, e:
 			logSys.error("Error decoding config file '%s': %s" % (resource, e))
 			return []
-		
+
 		resourceDir = os.path.dirname(resource)
 
 		newFiles = [ ('before', []), ('after', []) ]
