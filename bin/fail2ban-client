@@ -165,11 +165,11 @@ class Fail2banClient:
 						client = CSocket(self.__conf["socket"])
 					ret = client.send(c)
 					if ret[0] == 0:
-						logSys.debug("OK : " + `ret[1]`)
+						logSys.debug("OK : " + repr(ret[1]))
 						if showRet:
 							print beautifier.beautify(ret[1])
 					else:
-						logSys.error("NOK: " + `ret[1].args`)
+						logSys.error("NOK: " + repr(ret[1].args))
 						if showRet:
 							print beautifier.beautifyError(ret[1])
 						streamRet = False
